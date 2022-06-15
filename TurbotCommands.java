@@ -1,5 +1,7 @@
 package Final-Project-OOP;
 
+
+
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
@@ -29,7 +31,7 @@ public class TurbotCommands extends ListenerAdapter{
 		
 		//if command to show whether you make 
 		if (Command[0].equalsIgnoreCase(CommandCall+"commands")){
-			event.getChannel().sendMessage("Here are the list of commands: !help (to make reminder) | !ShowEventsToday | !ShowReminders | !ShowRemindersThisWeek | !ShowDailyReminders | !ShowremindersRemaining | !checkTime | !reset").queue();
+			event.getChannel().sendMessage("Here are the list of commands: !help (to make reminder) | !ShowEventsToday | !ShowReminders | !ShowRemindersThisWeek | !ShowDailyReminders | !ShowremindersRemaining | !checkTime | !resetMain | ").queue();
 		
 			
 		//help command to teach on how to make a reminder
@@ -310,13 +312,30 @@ public class TurbotCommands extends ListenerAdapter{
 		
 			
 		//used to reset the day list
-		}else if(Command[0].equalsIgnoreCase(CommandCall+"Reset")){
+		}else if(Command[0].equalsIgnoreCase(CommandCall+"ResetMain")){
 			for(int i=0;i<33;i++) {
 				RemindSentence[i]=null;
 				
 			}
 			event.getChannel().sendMessage("The list has been reset").queue();
 			
+			
+			
+		//reset weekly reminders
+		}else if(Command[0].equalsIgnoreCase(CommandCall+"ResetWeekly")) {
+			for(int i=0;i<9;i++) {
+				RemindWeek[i]=null;
+			}
+			event.getChannel().sendMessage("The list has been reset").queue();
+			
+			
+			
+		//reset all daily reminders
+		}else if(Command[0].equalsIgnoreCase(CommandCall+"ResetDaily")) {
+			for(int i=0;i<7;i++) {
+				RemindDaily[i]=null;
+			}
+			event.getChannel().sendMessage("The list has been reset").queue();
 			
 		//used to check time 
 		}else if (Command[0].equalsIgnoreCase(CommandCall+"Checktime")) {
@@ -327,6 +346,7 @@ public class TurbotCommands extends ListenerAdapter{
 			event.getChannel().sendMessage("Hours: " +RNC.Hours +" Minute:"+ RNC.Minutes + " Seconds: "+ RNC.Seconds+ " Day: "+X).queue();
 			
 		}
+		
 	   
 		
 	}
