@@ -1,5 +1,4 @@
-package Turbot;
-
+package Final-Project-OOP;
 
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -36,9 +35,9 @@ public class TurbotCommands extends ListenerAdapter{
 		//help command to teach on how to make a reminder
 	    }else if (Command[0].equalsIgnoreCase(CommandCall+"help")) {
 	    	event.getChannel().sendMessage("TO make a basic one time reminder use this format ").queue();
-	    	event.getChannel().sendMessage("Fortmat Day-> !ReminderDay1 'your-sentence' **numbers 1-31 available**").queue();
-	    	event.getChannel().sendMessage("Fortmat Week-> !Reminder**day** 'your sentence' EG: !reminderSaturday").queue();
-	    	event.getChannel().sendMessage("Fortmat Daily-> !ReminderDaily1 'your sentence' **number 1-5 available**").queue();
+	    	event.getChannel().sendMessage("Format Day-> !ReminderDay1 'your-sentence' **numbers 1-31 available**").queue();
+	    	event.getChannel().sendMessage("Format Week-> !Reminder**day** 'your sentence' EG: !reminderSaturday").queue();
+	    	event.getChannel().sendMessage("Format Daily-> !ReminderDaily1 'your sentence' **number 1-5 available**").queue();
 			
 	    	
 		
@@ -246,7 +245,9 @@ public class TurbotCommands extends ListenerAdapter{
 			
 			//for loop for all the list in existence for specific day reminders
 			event.getChannel().sendMessage("Reminders:").queue();
-			for (int i=0;i<31;i++) {
+			RNC.TotalDays();
+			int DayzNum=RNC.totalDays;
+			for (int i=0;i<DayzNum;i++) {
 				
 				String X=RemindSentence[i];
 				if (X!=null) {
@@ -263,7 +264,9 @@ public class TurbotCommands extends ListenerAdapter{
 			//for loop for all the list in existence for specific day reminders
 			event.getChannel().sendMessage("Reminders:").queue();
 			RNC.DayNum();
-			for (int i=RNC.Day;i<31;i++) {
+			RNC.TotalDays();
+			int DayzNum=RNC.totalDays;
+			for (int i=RNC.Day;i<DayzNum;i++) {
 				
 				String X=RemindSentence[i];
 				if (X!=null) {
@@ -295,8 +298,9 @@ public class TurbotCommands extends ListenerAdapter{
 			RNC.DayNum();
 			int day=RNC.Day;
 			int week=day+7;
-			
-			for (int i=day;i<week;i++) {
+			RNC.TotalDays();
+			int DayzNum=RNC.totalDays;
+			for (int i=day;i<week||i<DayzNum;i++) {
 				
 				String X=RemindSentence[i];
 				if (X!=null) {
