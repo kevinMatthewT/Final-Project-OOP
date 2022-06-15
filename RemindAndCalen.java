@@ -1,4 +1,5 @@
-package Turbot;
+package Final-Project-OOP;
+
 
 import java.util.Calendar;
 
@@ -24,6 +25,7 @@ public class RemindAndCalen {
 	int Day;
 	int WeekNum;
     
+	int totalDays;
 	
 	//getting the number of which day of the week it is
 	public void get_Week() {
@@ -40,6 +42,23 @@ public class RemindAndCalen {
 	
     public void DayNum() {
     	Day=c.get(Calendar.DAY_OF_MONTH);
+    }
+    
+    public void TotalDays() {
+    	int MonthNum=c.get(Calendar.MONTH);
+    	int YEARNum=c.get(Calendar.YEAR);
+    	if (MonthNum==1||MonthNum==3||MonthNum==5||MonthNum==7||MonthNum==8||MonthNum==10||MonthNum==12) {
+    		totalDays=31;
+    		
+    	}else if (MonthNum==4||MonthNum==6||MonthNum==9||MonthNum==11) {
+    		totalDays=30;
+    	}else if (MonthNum==2) {
+    		if (YEARNum%4==0) {
+    			totalDays=29;
+    		}else if(YEARNum%4!=0) {
+    			totalDays=28;
+    		}
+    	}
     }
     
     
